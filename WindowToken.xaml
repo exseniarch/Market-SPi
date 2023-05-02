@@ -1,0 +1,69 @@
+﻿<Window
+    x:Class="MFIWPF.WindowToken"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MFIWPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="API اطلاعات توکن"
+    Width="508"
+    Height="240"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Grid>
+        <GroupBox
+            Margin="7,10,7,8"
+            FlowDirection="RightToLeft"
+            Header="اطلاعات توکن">
+            <Grid>
+                <TextBox
+                    Name="textboxSourceArenaToken"
+                    Width="274"
+                    Height="18"
+                    Margin="99,83,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap" />
+                <Label
+                    Height="26"
+                    Margin="44,79,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Content="توکن API"
+                    FlowDirection="RightToLeft" />
+                <TextBlock
+                    Width="52"
+                    Height="21"
+                    Margin="378,81,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+                    <Hyperlink
+                        Name="hyperlinkSourceArena"
+                        Click="hyperlinkSourceArena_Click"
+                        NavigateUri="http://api.sourcearena.ir/panel/login"
+                        ToolTip="http://api.sourcearena.ir">
+                        <TextBlock Text="خرید توکن" />
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock
+                    Width="460"
+                    Height="52"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    FlowDirection="RightToLeft"
+                    Text="با توجه به محدودیت ها و قیمت های داده های روزانه بورسی این نرم افزار در حال حاضر از API مجموعه سورس آرنا استفاده می کند. با مراجعه به لینک زیر می توانید نسبت به تهیه توکن خود اقدام و سپس آنرا در فضای زیر وارد و ذخیره کنید:"
+                    TextWrapping="Wrap" />
+                <Button
+                    Name="buttonSave"
+                    Width="120"
+                    Height="25"
+                    Margin="0,122,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Content="ذخیره" Click="buttonSave_Click" />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

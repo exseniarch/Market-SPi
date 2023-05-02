@@ -1,0 +1,36 @@
+c:\users\hermes\documents\visual studio 2017\Projects\MFIWPF\MFIWPF\bin\Debug\MFIWPF.exe.config
+c:\users\hermes\documents\visual studio 2017\Projects\MFIWPF\MFIWPF\bin\Debug\MFIWPF.exe
+c:\users\hermes\documents\visual studio 2017\Projects\MFIWPF\MFIWPF\bin\Debug\MFIWPF.pdb
+c:\users\hermes\documents\visual studio 2017\Projects\MFIWPF\MFIWPF\obj\Debug\MFIWPF.csprojResolveAssemblyReference.cache
+c:\users\hermes\documents\visual studio 2017\Projects\MFIWPF\MFIWPF\obj\Debug\MainWindow.g.cs
+c:\users\hermes\documents\visual studio 2017\Projects\MFIWPF\MFIWPF\obj\Debug\App.g.cs
+c:\users\hermes\documents\visual studio 2017\Projects\MFIWPF\MFIWPF\obj\Debug\MFIWPF_MarkupCompile.cache
+c:\users\hermes\documents\visual studio 2017\Projects\MFIWPF\MFIWPF\obj\Debug\MFIWPF_MarkupCompile.lref
+c:\users\hermes\documents\visual studio 2017\Projects\MFIWPF\MFIWPF\obj\Debug\MainWindow.baml
+c:\users\hermes\documents\visual studio 2017\Projects\MFIWPF\MFIWPF\obj\Debug\MFIWPF.g.resources
+c:\users\hermes\documents\visual studio 2017\Projects\MFIWPF\MFIWPF\obj\Debug\MFIWPF.Properties.Resources.resources
+c:\users\hermes\documents\visual studio 2017\Projects\MFIWPF\MFIWPF\obj\Debug\MFIWPF.csproj.GenerateResource.Cache
+c:\users\hermes\documents\visual studio 2017\Projects\MFIWPF\MFIWPF\obj\Debug\MFIWPF.exe
+c:\users\hermes\documents\visual studio 2017\Projects\MFIWPF\MFIWPF\obj\Debug\MFIWPF.pdb
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\obj\Debug\MainWindow.g.cs
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\obj\Debug\App.g.cs
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\obj\Debug\MFIWPF_MarkupCompile.cache
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\obj\Debug\MFIWPF_MarkupCompile.lref
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\bin\Debug\MFIWPF.exe.config
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\bin\Debug\MFIWPF.exe
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\bin\Debug\MFIWPF.pdb
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\bin\Debug\Newtonsoft.Json.dll
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\bin\Debug\RestSharp.dll
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\bin\Debug\Newtonsoft.Json.xml
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\bin\Debug\RestSharp.xml
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\obj\Debug\MainWindow.baml
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\obj\Debug\MFIWPF.g.resources
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\obj\Debug\MFIWPF.Properties.Resources.resources
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\obj\Debug\MFIWPF.csproj.GenerateResource.Cache
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\obj\Debug\MFIWPF.exe
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\obj\Debug\MFIWPF.pdb
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\obj\Debug\WindowLogIn.g.cs
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\obj\Debug\WindowLogIn.baml
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\obj\Debug\MFIWPF.csprojAssemblyReference.cache
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\obj\Debug\MFIWPF.csproj.CoreCompileInputs.cache
+D:\Multimedia\Documents\Stock\Codes\MFIWPF\MFIWPF\obj\Debug\MFIWPF.csproj.CopyComplete

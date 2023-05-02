@@ -1,0 +1,1689 @@
+﻿<Window
+    x:Class="Spi.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Spi"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Name="MainWin"
+    Title="SPi - Pi-Capital Smart Money Investigator"
+    Width="1280"
+    Height="768"
+    MinWidth="1280"
+    MinHeight="680"
+    Loaded="Window_Loaded"
+    SizeChanged="Window_SizeChanged"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Maximized"
+    mc:Ignorable="d">
+    <!--<Window.Resources>
+        <Style TargetType="Window">
+            <Setter Property="Foreground" Value="#d4d7cb" />
+            <Setter Property="Background" Value="#2a2d42" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#d4d7cb" />
+            <Setter Property="Background" Value="#2a2d42" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="#d4d7cb" />
+            <Setter Property="Background" Value="#2a2d42" />
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Foreground" Value="#d4d7cb" />
+            <Setter Property="Background" Value="#2a2d42" />
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="#d4d7cb" />
+            <Setter Property="Background" Value="#2a2d42" />
+        </Style>
+        <Style TargetType="RadioButton">
+            <Setter Property="Foreground" Value="#d4d7cb" />
+            <Setter Property="Background" Value="#2a2d42" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#d4d7cb" />
+            <Setter Property="Background" Value="#2a2d42" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="#d4d7cb" />
+            <Setter Property="Background" Value="#2a2d42" />
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="Foreground" Value="#d4d7cb" />
+            <Setter Property="Background" Value="#2a2d42" />
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Foreground" Value="#d4d7cb" />
+            <Setter Property="Background" Value="#2a2d42" />
+    -->
+    <!--<Setter Property="Foreground" Value="#2a2d42" />-->
+    <!--
+        </Style>
+        <Style TargetType="TabControl">
+            <Setter Property="Foreground" Value="#d4d7cb" />
+            <Setter Property="Background" Value="#2a2d42" />
+        </Style>
+        <Style TargetType="TabItem">
+            <Setter Property="Foreground" Value="#d4d7cb" />
+            <Setter Property="Background" Value="#2a2d42" />
+        </Style>
+    </Window.Resources>-->
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid
+            x:Name="grid_Wait"
+            Panel.ZIndex="1000"
+            Background="DarkGray"
+            FlowDirection="RightToLeft"
+            Opacity="0.9"
+            Visibility="Collapsed">
+            <Grid Height="200" Margin="0">
+                <Label
+                    x:Name="labelAssetCounter"
+                    Height="26"
+                    Margin="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Content="" />
+                <Grid
+                    Height="150"
+                    Margin="0"
+                    VerticalAlignment="Center">
+                    <!--<Grid Height="50" VerticalAlignment="Center">
+                        <Label x:Name="LabelWhereAmI" Content="" HorizontalAlignment="Center" Margin="0" Height="26" VerticalAlignment="Top"/>
+                    </Grid>-->
+                    <Grid
+                        Height="50"
+                        Margin="0"
+                        VerticalAlignment="Top">
+                        <ProgressBar
+                            x:Name="progressbarRetrieval"
+                            Width="350"
+                            Height="25"
+                            Margin="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Panel.ZIndex="0"
+                            Maximum="100"
+                            Minimum="0" />
+                        <Label
+                            x:Name="labelDataRetrieval"
+                            Margin="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Panel.ZIndex="1"
+                            Content="دریافت از پایگاه داده ..." />
+                    </Grid>
+                    <Grid
+                        x:Name="GridAnalysisStatus"
+                        Height="50"
+                        Margin="0"
+                        VerticalAlignment="Bottom"
+                        Visibility="Collapsed">
+                        <ProgressBar
+                            x:Name="progressbarAnalysis"
+                            Width="350"
+                            Height="25"
+                            Margin="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Panel.ZIndex="0"
+                            Maximum="100"
+                            Minimum="0" />
+                        <Label
+                            Name="LabelDataAnalysis"
+                            Margin="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Panel.ZIndex="1"
+                            Content="تحلیل داده ها..." />
+                    </Grid>
+                </Grid>
+                <Button
+                    x:Name="buttonStop"
+                    Width="75"
+                    Height="20"
+                    Margin="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Click="buttonStop_Click"
+                    Content="توقف" />
+            </Grid>
+        </Grid>
+        <ContentControl>
+            <Grid FlowDirection="RightToLeft">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="575" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="294" />
+                    <RowDefinition />
+                    <RowDefinition Height="49.04" />
+                </Grid.RowDefinitions>
+
+                <!--<Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="199,132,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>-->
+                <!--<ProgressBar Name="progressBar_Loader" Minimum="0" Maximum="100" Height="25" Margin="65,88,92,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="350" Grid.Column="1"/>-->
+
+                <TextBox
+                    x:Name="TextBoxDifferance"
+                    Width="38"
+                    Height="23"
+                    Margin="181,165,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    VerticalContentAlignment="Center"
+                    Text="100"
+                    TextChanged="TextBoxDifferance_TextChanged"
+                    TextWrapping="Wrap" />
+                <Label
+                    Width="41"
+                    Height="26"
+                    Margin="4,37,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Content="دوره:" />
+                <TextBox
+                    x:Name="TextBoxHistoryDays"
+                    Width="43"
+                    Height="23"
+                    Margin="39,41,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    VerticalContentAlignment="Center"
+                    Text="30"
+                    TextChanged="TextBoxHistoryDays_TextChanged"
+                    TextWrapping="Wrap" />
+                <ComboBox
+                    x:Name="ComboBoxAsset"
+                    Width="120"
+                    Height="26"
+                    Margin="11,105,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    DisplayMemberPath="Name"
+                    IsEditable="True"
+                    SelectedValuePath="Name"
+                    SelectionChanged="ComboBoxAsset_SelectionChanged"
+                    ToolTip="{Binding Path=SelectedItem.FullName, RelativeSource={RelativeSource Self}}" />
+                <Button
+                    x:Name="ButtonInvestigate"
+                    Width="150"
+                    Height="26"
+                    Margin="0,105,10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Click="ButtonInvestigate_Click"
+                    Content="به روز رسانی" />
+                <RadioButton
+                    x:Name="radiobuttonCountDays"
+                    Width="67"
+                    Height="15"
+                    Margin="96,43,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Checked="radiobuttonCountDays_Checked"
+                    Content="روز پیش /"
+                    GroupName="Days"
+                    IsChecked="True" />
+                <RadioButton
+                    x:Name="radiobuttonCountWorkDays"
+                    Width="85"
+                    Height="15"
+                    Margin="168,43,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Checked="radiobuttonCountWorkDays_Checked"
+                    Content="روز کاری پیش"
+                    GroupName="Days" />
+                <Label
+                    Name="LabelVolumeControl"
+                    Width="125"
+                    Height="26"
+                    Margin="0,162,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Content="% میانگین دوره بیشترند" />
+                <!--<Label Content="سهم حقوقی از خرید %" HorizontalAlignment="Left" Margin="9,128,0,0" VerticalAlignment="Top" Height="26" Width="126"/>
+                <TextBox x:Name="TextBoxCoBuyPercentage" HorizontalAlignment="Left" Height="23" Margin="140,131,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="45" TextChanged="TextBoxCoBuyPercentage_TextChanged"/>
+                <Label Content="سهم حقوقی از فروش %" HorizontalAlignment="Left" Margin="208,128,0,0" VerticalAlignment="Top" Height="26" Width="135"/>
+                <TextBox x:Name="TextBoxCoSellPercentage" HorizontalAlignment="Left" Height="23" Margin="348,131,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="45" TextChanged="TextBoxCoSellPercentage_TextChanged"/>
+                <WrapPanel Name="wrappanelEveryAsset" HorizontalAlignment="Left" Margin="250,0,0,108" Height="26" VerticalAlignment="Bottom" Width="89" ToolTipService.ToolTip="متوسط حجم خریداری شده هر کد خریدار، بیشتر از حجم فروخته شده توسط هرکد فروشنده باشد" >
+                    <CheckBox FlowDirection="LeftToRight" x:Name="checkboxLoadEveryAsset" VerticalAlignment="Center" IsChecked="False" Checked="checkboxCompareSides_Checked" Unchecked="checkboxCompareSides_Unchecked"/>
+                    <Label Content="همه نمادها" VerticalAlignment="Center"/>
+                </WrapPanel>
+                -->
+                <RadioButton
+                    x:Name="radiobuttonSmartMoneyIn"
+                    Width="87"
+                    Height="15"
+                    Margin="104,142,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Checked="radiobuttonSmartMoneyIn_Checked"
+                    Content="ورود نقدینگی"
+                    GroupName="SmartMoneyDirection"
+                    IsChecked="False" />
+                <RadioButton
+                    x:Name="radiobuttonSmartMoneyOut"
+                    Width="94"
+                    Height="15"
+                    Margin="196,142,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Checked="radiobuttonSmartMoneyOut_Checked"
+                    Content="خروج نقدینگی"
+                    GroupName="SmartMoneyDirection"
+                    IsChecked="False" />
+
+                <WrapPanel
+                    Name="wrappanelVolumeControl"
+                    Width="89"
+                    Height="26"
+                    Margin="9,190,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    ToolTipService.ToolTip="متوسط حجم خریداری شده هر کد خریدار، بیشتر از حجم فروخته شده توسط هرکد فروشنده باشد">
+                    <CheckBox
+                        x:Name="checkboxCompareSides"
+                        VerticalAlignment="Center"
+                        Checked="checkboxCompareSides_Checked"
+                        FlowDirection="LeftToRight"
+                        IsChecked="False"
+                        Unchecked="checkboxCompareSides_Unchecked" />
+                    <Label VerticalAlignment="Center" Content="کنترل حجم" />
+                </WrapPanel>
+                <WrapPanel
+                    Name="wrappanelCompareLastNClosing"
+                    Width="175"
+                    Height="26"
+                    Margin="100,190,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    ToolTipService.ToolTip="آخرین قیمت از قیمت پایانی بیشتر باشد">
+                    <CheckBox
+                        x:Name="checkboxCompareLastNClosing"
+                        VerticalAlignment="Center"
+                        Checked="checkboxCompareLastNClosing_Checked"
+                        FlowDirection="LeftToRight"
+                        IsChecked="False"
+                        Unchecked="checkboxCompareLastNClosing_Unchecked" />
+                    <Label VerticalAlignment="Center" Content="کنترل آخرین قیمت و پایانی" />
+                </WrapPanel>
+                <WrapPanel
+                    Name="wrappanelControlLastPricePercentage"
+                    Width="180"
+                    Height="26"
+                    Margin="275,190,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    ToolTipService.ToolTip="درصد تغییرات آخرین قیمت بیشتر از صفر باشد">
+                    <CheckBox
+                        x:Name="checkboxControlLastPricePercentage"
+                        VerticalAlignment="Center"
+                        Checked="checkboxControlLastPricePercentage_Checked"
+                        FlowDirection="LeftToRight"
+                        IsChecked="false"
+                        Unchecked="checkboxControlLastPricePercentage_Unchecked" />
+                    <Label VerticalAlignment="Center" Content="کنترل درصد تغییر آخرین قیمت" />
+                </WrapPanel>
+                <!--<WrapPanel HorizontalAlignment="Left" Margin="9,105,0,0" Height="26" VerticalAlignment="Top" Width="70" >
+                    <CheckBox FlowDirection="LeftToRight" x:Name="checkboxSingleAsset" VerticalAlignment="Center" Checked="checkboxSingleAsset_Checked" Unchecked="checkboxSingleAsset_Unchecked"/>
+                    <Label Content="تک سهم" VerticalAlignment="Center"/>
+                </WrapPanel>-->
+                <Button
+                    x:Name="buttonReload"
+                    Width="75"
+                    Height="26"
+                    Margin="358,10,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Click="buttonReload_Click"
+                    Content="بازنشانی" />
+
+                <TabControl
+                    Name="TabControlSmartMoneyList"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Margin="10,10,10,13"
+                    SelectionChanged="TabControl_SelectionChanged">
+                    <TabItem>
+                        <TabItem.Header>
+                            <TextBlock Text="جریان نقدینگی تفکیکی" ToolTip="جریان نقدینگی روزانه به تفکیک نماد و روز در دوره انتخابی" />
+                        </TabItem.Header>
+                        <Grid Background="#FFE5E5E5">
+                            <GroupBox>
+                                <DataGrid
+                                    x:Name="DataGridSmartMoney"
+                                    Margin="10"
+                                    AutoGenerateColumns="False"
+                                    FrozenColumnCount="1"
+                                    IsReadOnly="True"
+                                    ItemsSource="{Binding SmartMoneyTotal, Mode=TwoWay}"
+                                    SelectionChanged="DataGridSmartMoney_SelectionChanged">
+                                    <!--<DataGrid.RowDetailsTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Background="Orange" Text="{Binding Density}" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                    </DataTemplate>
+                                </DataGrid.RowDetailsTemplate>-->
+
+                                    <DataGrid.RowStyle>
+                                        <Style TargetType="DataGridRow">
+                                            <Setter Property="Background" Value="{Binding BackgroundColor}" />
+                                        </Style>
+                                    </DataGrid.RowStyle>
+
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding AssetName}" Header="نماد">
+                                            <DataGridTextColumn.CellStyle>
+                                                <Style TargetType="DataGridCell">
+                                                    <Setter Property="ToolTip" Value="{Binding FullName}" />
+                                                </Style>
+                                            </DataGridTextColumn.CellStyle>
+                                        </DataGridTextColumn>
+
+                                        <!--<DataGridTextColumn Binding="{Binding Density, StringFormat=F}" Header="چگالی">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="ToolTipService.ToolTip" Value="فشردگی و تکرار خرید در دوره"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>-->
+                                        <!--<DataGridTextColumn Binding="{Binding Spectrum, StringFormat=F}" Header="Sp"/>-->
+                                        <DataGridTextColumn Binding="{Binding Date}" Header="تاریخ" />
+                                        <DataGridTextColumn Binding="{Binding PtoE}" Header="P/E">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Setter Property="FlowDirection" Value="LeftToRight" />
+                                                    <Setter Property="TextAlignment" Value="Right" />
+                                                    <!--<Setter Property="Padding" Value="3" />-->
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+                                        <!--<DataGridTextColumn Binding="{Binding MarketCapital, StringFormat=#\,#}" Header="ارزش بازار">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="ToolTipService.ToolTip" Value="ارزش بازار در تاریخ نمایش داده شده" />
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="FlowDirection" Value="LeftToRight" />
+                                                <Setter Property="TextAlignment" Value="Right" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>-->
+                                        <!--<DataGridTextColumn Binding="{Binding StartCap, StringFormat=#\,#}" Header="ارزش شروع"/>
+                                    <DataGridTextColumn Binding="{Binding EndCap, StringFormat=#\,#}" Header="ارزش پایان"/>-->
+                                        <DataGridTextColumn Binding="{Binding MarketGrowth, StringFormat=#\,#}" Header="رشد ارزش بازار">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="رشد ارزش بازار از ابندای دوره مورد نظر تا تاریخ نمایش داده شده" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Setter Property="FlowDirection" Value="LeftToRight" />
+                                                    <Setter Property="TextAlignment" Value="Right" />
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding MarketGrowthPercentage, StringFormat={}{0:'('#0.00'%)'}}" Header="(%)">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="درصد رشد ارزش بازار تا این تاریخ نسبت به شروع دوره انتخابی" />
+                                                    <!--<Setter Property="Background" Value="Gray" />-->
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Setter Property="FlowDirection" Value="LeftToRight" />
+                                                    <Setter Property="TextAlignment" Value="Right" />
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding BriefingStrength, StringFormat=F}" Header="بریفینگ">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="شدت خلاصه شدن - Briefing Strength : نسبت خلاصه شدن تعداد فروشندگان در خریداران&#x0a;(هر خریدار بصورت سرانه سهم چند فروشنده را خریداری کرده است)" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding RealBuyToSellVolume, StringFormat=F}" Header="قدرت&#x0a;خریدار">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="نسبت سرانه حجم خرید به فروش حقیقی ها&#x0a;قدرت خریدار" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding VolumeGrowthRatio, StringFormat=F}" Header="بزرگی">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="نسبت حجم معامله شده در روز نماد به حجم میانگین دوره انتخابی&#x0a;(حجم معاملات روز چند برابر میانگین بوده)" />
+                                                    <Setter Property="Background" Value="Gray" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding TotalTradedVolume, StringFormat=#\,#}" Header="حجم تجمعی">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="کل حجم مبادله شده از ابتدای دوره تا این تاریخ" />
+                                                    <Setter Property="Background" Value="DimGray" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding TotalTradedToPublicFloat, StringFormat={}{0:'('#0.00'%)'}}" Header="%&#x0a;شناوری">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="درصد کل حجم مبادله شده از ابتدای دوره تا این تاریخ به شناوری" />
+                                                    <Setter Property="Background" Value="DimGray" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding TotalTradedToStockCount, StringFormat={}{0:'('#0.00'%)'}}" Header="%&#x0a;سهام">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="درصد کل حجم مبادله شده از ابتدای دوره تا این تاریخ به کل سهام" />
+                                                    <Setter Property="Background" Value="DimGray" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding TradedVolume, StringFormat=#\,#}" Header="حجم روز">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="حجم معامله شده در تاریخ نمایش داده شده" />
+                                                    <Setter Property="Background" Value="DarkGray" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding TradedVolumePercent, StringFormat={}{0:'('#0.00'%)'}}" Header="(%)">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="درصد حجم معامله شده در تاریخ نمایش داده شده" />
+                                                    <Setter Property="Background" Value="DarkGray" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding AverageVolume, StringFormat=#\,#}" Header="میانگین دوره">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="میانگین حجم در دوره زمانی انتخاب شده" />
+                                                    <Setter Property="Background" Value="LightGray" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding AverageVolumePercent, StringFormat={}{0:'('#0.00'%)'}}" Header="(%)">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="درصد میانگین حجم در دوره زمانی انتخاب شده" />
+                                                    <Setter Property="Background" Value="LightGray" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding BasisVolume, StringFormat=#\,#}" Header="حجم مبنا">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="حجم مبنای نماد" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+
+                                        <DataGridTextColumn Binding="{Binding RealPeriodInOut, StringFormat=N0}" Header="جریان کل دوره">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="جریان کل نقدینگی حقیقی در دوره انتخاب شده تا تاریخ ردیف مورد نظر" />
+                                                    <Setter Property="Background" Value="SteelBlue" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="HorizontalAlignment" Value="Left" />
+                                                    <Setter Property="FlowDirection" Value="LeftToRight" />
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+
+                                        <DataGridTextColumn Binding="{Binding RealInOut, StringFormat=N0}" Header="جریان روز">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="جریان کل نقدینگی حقیقی در روز مورد نظر" />
+                                                    <Setter Property="Background" Value="LightSteelBlue" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="HorizontalAlignment" Value="Left" />
+                                                    <Setter Property="FlowDirection" Value="LeftToRight" />
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+
+                                        <DataGridTextColumn Binding="{Binding RealPerCodeBuyValue, StringFormat=#\,#}" Header="سرانه خرید">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="سرانه ریالی خرید هر کد حقیقی" />
+                                                    <Setter Property="Background" Value="LimeGreen" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding RealPerCodeSellValue, StringFormat=#\,#}" Header="سرانه فروش">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="سرانه ريالی فروش هر کد حقیقی" />
+                                                    <Setter Property="Background" Value="OrangeRed" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding RealBuyerNumber, StringFormat=#\,#}" Header="خریدار">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="تعداد کدهای خریدار حقیقی" />
+                                                    <Setter Property="Background" Value="SeaGreen" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding RealSellerNumber, StringFormat=#\,#}" Header="فروشنده">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="تعداد کدهای فروشنده حقیقی" />
+                                                    <Setter Property="Background" Value="MediumSeaGreen" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding RealBuyVolume, StringFormat=#\,#}" Header="حجم خرید">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="حجم خرید روز حقیقی" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding RealSellVolume, StringFormat=#\,#}" Header="حجم فروش">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="حجم فروش روز حقیقی" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding RealBuyPart, StringFormat=F}" Header="% خرید">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="سهم خریداران حقیقی (%)" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding RealSellPart, StringFormat=F}" Header="% فروش">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="سهم فروشندگان حقیقی (%)" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding CoBuyPart, StringFormat=F}" Header="% خرید &#x0a; حقوقی">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="سهم خریداران حقوقی (%)" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding CoSellPart, StringFormat=F}" Header="% فروش &#x0a; حقوقی">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="سهم فروشندگان حقوقی (%)" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <!--
+                                    <DataGridTextColumn Binding="{Binding BuyerSellerRatio, StringFormat=F}" Header="خریدار/&#x0a;فروشنده">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="ToolTipService.ToolTip" Value="نسبت تعداد خریداران/فروشندگان" />
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>-->
+                                        <DataGridTextColumn Binding="{Binding ShareOfPublicFloat, StringFormat={}{0:'('#0.00'%)'}}" Header="سهم از&#x0a;شناوری">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="نسبت درصد حجم معاملات به سهام شناور&#x0a;(معاملات روز چند درصد از کل سهام شناور نماد بوده)" />
+                                                    <Setter Property="Background" Value="GreenYellow" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                            <DataGridTextColumn.CellStyle>
+                                                <Style TargetType="{x:Type DataGridCell}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </DataGridTextColumn.CellStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding PublicFloat, StringFormat=#\,#}" Header="شناوری">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="تعداد سهام شناور" />
+                                                    <Setter Property="Background" Value="YellowGreen" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding PublicFloatPercentage, StringFormat={}{0:'('#0.00'%)'}}" Header="(%)">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="تعداد سهام شناور" />
+                                                    <Setter Property="Background" Value="YellowGreen" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding StockCount, StringFormat=#\,#}" Header="تعداد سهام">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                    <Setter Property="ToolTipService.ToolTip" Value="تعداد سهام انتشار یافته نماد" />
+                                                    <Setter Property="Background" Value="DarkSeaGreen" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Binding="{Binding RepeatCount}" Header="تکرار">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                    <Setter Property="ToolTipService.ToolTip" Value="دفعات تکرار شرایط تنظیم شده برای نماد در دوره مورد نظر&#x0a;(در دوره انتخاب شده چند بار شرایط بالا در مورد سهم صحیح بوده است)" />
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                        </DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </GroupBox>
+                        </Grid>
+                    </TabItem>
+
+                    <TabItem Name="tabItemDailyFlow">
+                        <TabItem.Header>
+                            <TextBlock Text="مجموع جریان نقدینگی" ToolTip="مجموع روزانه جریان نقدینگی نمادهای لیست شده" />
+                        </TabItem.Header>
+                        <Grid Background="#FFE5E5E5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="500" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <!--<Grid.RowDefinitions>
+
+                            </Grid.RowDefinitions>-->
+                            <DataGrid
+                                x:Name="DataGridDailyFlow"
+                                Grid.Row="0"
+                                Grid.ColumnSpan="1"
+                                Width="480"
+                                Margin="10,10,0,10"
+                                HorizontalAlignment="Left"
+                                AutoGenerateColumns="False"
+                                FrozenColumnCount="1"
+                                ItemsSource="{Binding DailyMoneyFlow, Mode=TwoWay}"
+                                SelectionChanged="DataGridSmartMoney_SelectionChanged">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Date}" Header="تاریخ" />
+                                    <DataGridTextColumn Binding="{Binding TotalRealBuy, StringFormat=#\,#}" Header="خرید">
+                                        <DataGridTextColumn.CellStyle>
+                                            <Style TargetType="DataGridCell">
+                                                <Setter Property="ToolTip" Value="{Binding TotalRealBuy}" />
+                                            </Style>
+                                        </DataGridTextColumn.CellStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding TotalRealSell, StringFormat=#\,#}" Header="فروش">
+                                        <DataGridTextColumn.CellStyle>
+                                            <Style TargetType="DataGridCell">
+                                                <Setter Property="ToolTip" Value="{Binding TotalRealSell}" />
+                                            </Style>
+                                        </DataGridTextColumn.CellStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding Flow, StringFormat=#\,#}" Header="جریان">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="FlowDirection" Value="LeftToRight" />
+                                                <Setter Property="TextAlignment" Value="Right" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.CellStyle>
+                                            <Style TargetType="DataGridCell">
+                                                <Setter Property="ToolTip" Value="{Binding Flow}" />
+                                            </Style>
+                                        </DataGridTextColumn.CellStyle>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Canvas
+                                Name="canvasFlowChart"
+                                Grid.Column="1"
+                                Margin="10"
+                                Background="White"
+                                FlowDirection="LeftToRight"
+                                SizeChanged="canvasFlowChart_SizeChanged" />
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+                <Label
+                    Width="84"
+                    Height="26"
+                    Margin="11,136,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Content="جریان نقدینگی:" />
+                <Label
+                    Width="79"
+                    Height="26"
+                    Margin="7,162,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Content="تغییرات حجم:" />
+                <RadioButton
+                    x:Name="RadioButtonDoNotConsiderVolume"
+                    Width="75"
+                    Height="15"
+                    Margin="366,168,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Checked="RadioButtonDoNotConsiderVolume_Checked"
+                    Content="در نظر نگیر"
+                    GroupName="ConsiderVolume" />
+                <RadioButton
+                    x:Name="RadioButtonConsiderVolume"
+                    Width="85"
+                    Height="15"
+                    Margin="91,168,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Checked="RadioButtonConsiderVolume_Checked"
+                    Content="روزهایی که از"
+                    GroupName="ConsiderVolume"
+                    IsChecked="True" />
+
+                <Grid
+                    Width="341"
+                    Height="35"
+                    Margin="10,221,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="27*" />
+                    </Grid.ColumnDefinitions>
+                    <WrapPanel
+                        Grid.ColumnSpan="2"
+                        Width="69"
+                        Height="26"
+                        Margin="0,5,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        ToolTipService.ToolTip="فیلتر کردن و نمایش نتایج امروز">
+                        <CheckBox
+                            x:Name="checkboxShowOnlyToday"
+                            VerticalAlignment="Center"
+                            Checked="checkboxShowOnlyToday_Checked"
+                            FlowDirection="LeftToRight"
+                            Unchecked="checkboxShowOnlyToday_Unchecked" />
+                        <Label VerticalAlignment="Center" Content="نتایج روز" />
+                    </WrapPanel>
+                    <ComboBox
+                        x:Name="comboboxMonth"
+                        Grid.Column="1"
+                        Width="100"
+                        Height="26"
+                        Margin="94,5,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        DisplayMemberPath="Name"
+                        SelectedValuePath="Number"
+                        SelectionChanged="comboboxMonth_SelectionChanged" />
+                    <ComboBox
+                        x:Name="comboboxYear"
+                        Grid.Column="1"
+                        Width="88"
+                        Height="26"
+                        Margin="199,5,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        SelectionChanged="comboboxYear_SelectionChanged" />
+                    <ComboBox
+                        x:Name="comboboxDay"
+                        Grid.Column="1"
+                        Width="50"
+                        Height="26"
+                        Margin="39,5,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        SelectionChanged="comboboxDay_SelectionChanged" />
+                </Grid>
+                <GroupBox
+                    Grid.Column="1"
+                    Width="615"
+                    Height="284"
+                    Margin="0,0,10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top">
+                    <GroupBox.Header>
+                        <WrapPanel
+                            Grid.Column="1"
+                            Width="101"
+                            Height="26"
+                            Margin="10,10,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            ToolTipService.ToolTip="فیلتر کردن و نمایش نتایج امروز">
+                            <CheckBox
+                                x:Name="checkboxSignalSettings"
+                                VerticalAlignment="Center"
+                                Checked="checkboxSignalSettings_Checked"
+                                FlowDirection="LeftToRight"
+                                Unchecked="checkboxSignalSettings_Unchecked" />
+                            <Label VerticalAlignment="Center" Content="سیگنال یابی" />
+                        </WrapPanel>
+                    </GroupBox.Header>
+                    <Grid
+                        Name="GridSignalSettings"
+                        Grid.Column="1"
+                        Width="595"
+                        Margin="1,1,1,1"
+                        HorizontalAlignment="Left"
+                        IsEnabled="False">
+                        <Label
+                            Margin="10,10,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Content="تکرار &gt;=" />
+                        <TextBox
+                            x:Name="TextBoxSignalRepeat"
+                            Width="35"
+                            Height="23"
+                            Margin="62,13,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            Text="3"
+                            TextChanged="TextBoxSignalRepeat_TextChanged" />
+                        <Grid
+                            Width="228"
+                            Height="27"
+                            Margin="10,45,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                            <Label
+                                x:Name="LabelBriefing"
+                                Margin="0,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Content="بریفینگ &gt;="
+                                ToolTip="نسبت خریداران به فروشندگان حقیقی حداقل چقدر باشد" />
+                            <TextBox
+                                x:Name="TextBoxSignalBriefing"
+                                Width="35"
+                                Height="23"
+                                Margin="69,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Text="3"
+                                TextChanged="TextBoxSignalBriefing_TextChanged"
+                                TextWrapping="Wrap"
+                                ToolTip="نسبت خریداران به فروشندگان حقیقی حداقل چقدر باشد" />
+                            <WrapPanel
+                                Width="71"
+                                Height="26"
+                                Margin="109,-2,0,3"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                ToolTipService.ToolTip="فیلتر کردن و نمایش نتایج امروز">
+                                <CheckBox
+                                    x:Name="CheckBoxBriefing"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Checked="CheckBoxBriefing_Checked"
+                                    Content=""
+                                    FlowDirection="LeftToRight"
+                                    Unchecked="CheckBoxBriefing_Unchecked" />
+                                <Label VerticalAlignment="Center" Content="کوچکتر" />
+                            </WrapPanel>
+                        </Grid>
+                        <Grid
+                            Width="286"
+                            Height="27"
+                            Margin="10,78,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                            <Label
+                                x:Name="LabelShareOfFreePublic"
+                                Margin="0,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Content="معاملات &gt;= " />
+                            <TextBox
+                                x:Name="TextBoxSignalShareOfFreePublic"
+                                Width="30"
+                                Height="23"
+                                Margin="71,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Text="0"
+                                TextChanged="TextBoxSignalShareOfFreePublic_TextChanged"
+                                TextWrapping="Wrap" />
+                            <Label
+                                Margin="104,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Content="% از شناوری" />
+                            <WrapPanel
+                                Width="70"
+                                Height="26"
+                                Margin="174,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                ToolTipService.ToolTip="فیلتر کردن و نمایش نتایج امروز">
+                                <CheckBox
+                                    x:Name="CheckBoxShareOfFreePublic"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Checked="CheckBoxShareOfFreePublic_Checked"
+                                    Content=""
+                                    FlowDirection="LeftToRight"
+                                    Unchecked="CheckBoxShareOfFreePublic_Unchecked" />
+                                <Label VerticalAlignment="Center" Content="کوچکتر" />
+                            </WrapPanel>
+
+                        </Grid>
+
+                        <Grid
+                            Width="241"
+                            Height="27"
+                            Margin="331,46,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                            <Label
+                                x:Name="LabelBuyerStrength"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                Content="قدرت خریدار &gt;=" />
+                            <TextBox
+                                x:Name="TextBoxSignalBuyStrength"
+                                Width="35"
+                                Height="23"
+                                Margin="93,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                VerticalContentAlignment="Center"
+                                Text="1.5"
+                                TextChanged="TextBoxSignalBuyStrength_TextChanged"
+                                TextWrapping="Wrap" />
+                            <WrapPanel
+                                Width="66"
+                                Height="26"
+                                Margin="133,0,0,1"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                ToolTipService.ToolTip="فیلتر کردن و نمایش نتایج امروز">
+                                <CheckBox
+                                    x:Name="CheckBoxBuyerStrength"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Checked="CheckBoxBuyerStrength_Checked"
+                                    Content=""
+                                    FlowDirection="LeftToRight"
+                                    Unchecked="CheckBoxBuyerStrength_Unchecked" />
+                                <Label VerticalAlignment="Center" Content="کوچکتر" />
+                            </WrapPanel>
+
+                        </Grid>
+                        <Grid
+                            Width="230"
+                            Height="27"
+                            Margin="331,78,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                            <Label
+                                x:Name="LabelBuyerCount"
+                                Margin="0,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Content="خریداران &gt;=" />
+                            <TextBox
+                                x:Name="TextBoxSignalBuyerCount"
+                                Width="35"
+                                Height="23"
+                                Margin="71,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Text="1"
+                                TextChanged="TextBoxSignalBuyerCount_TextChanged"
+                                TextWrapping="Wrap" />
+                            <WrapPanel
+                                Width="68"
+                                Height="26"
+                                Margin="111,0,0,1"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                ToolTipService.ToolTip="فیلتر کردن و نمایش نتایج امروز">
+                                <CheckBox
+                                    x:Name="CheckBoxBuyerCount"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Checked="CheckBoxBuyerCount_Checked"
+                                    Content=""
+                                    FlowDirection="LeftToRight"
+                                    Unchecked="CheckBoxBuyerCount_Unchecked" />
+                                <Label VerticalAlignment="Center" Content="کوچکتر" />
+                            </WrapPanel>
+                        </Grid>
+                        <Grid
+                            Width="238"
+                            Height="27"
+                            Margin="10,110,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                            <Label
+                                x:Name="LabelCoBuy"
+                                Margin="0,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Content="خرید حقوقی &lt;= %" />
+                            <TextBox
+                                x:Name="TextBoxSignalCoBuy"
+                                Width="30"
+                                Height="23"
+                                Margin="105,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Text="0"
+                                TextChanged="TextBoxSignalCoBuy_TextChanged"
+                                TextWrapping="Wrap" />
+
+                            <WrapPanel
+                                Width="59"
+                                Height="26"
+                                Margin="140,0,0,1"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                ToolTipService.ToolTip="فیلتر کردن و نمایش نتایج امروز">
+                                <CheckBox
+                                    x:Name="CoBuyGreater"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Checked="CoBuyGreater_Checked"
+                                    Content=""
+                                    FlowDirection="LeftToRight"
+                                    Unchecked="CoBuyGreater_Unchecked" />
+                                <Label VerticalAlignment="Center" Content="بزرگتر" />
+                            </WrapPanel>
+                        </Grid>
+                        <Grid
+                            Width="246"
+                            Height="27"
+                            Margin="331,110,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                            <Label
+                                x:Name="LabelCoSell"
+                                Margin="0,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Content="فروش حقوقی &lt;= %" />
+                            <TextBox
+                                x:Name="TextBoxSignalCoSell"
+                                Width="30"
+                                Height="23"
+                                Margin="112,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Text="0"
+                                TextChanged="TextBoxSignalCoSell_TextChanged"
+                                TextWrapping="Wrap" />
+                            <WrapPanel
+                                Width="65"
+                                Height="26"
+                                Margin="148,0,0,1"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                ToolTipService.ToolTip="فیلتر کردن و نمایش نتایج امروز">
+                                <CheckBox
+                                    x:Name="CoSellGreater"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Checked="CoSellGreater_Checked"
+                                    Content=""
+                                    FlowDirection="LeftToRight"
+                                    Unchecked="CoSellGreater_Unchecked" />
+                                <Label VerticalAlignment="Center" Content="بزرگتر" />
+                            </WrapPanel>
+                        </Grid>
+                        <Grid
+                            Width="250"
+                            Height="27"
+                            Margin="331,142,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                            <Label
+                                x:Name="LabelCoBuyerGreatner"
+                                Margin="0,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Content="حداکثر اختلاف خرید و فروش حقوقی تا %" />
+                            <TextBox
+                                x:Name="TextBoxSignalCoBuyerGreatness"
+                                Width="30"
+                                Height="23"
+                                Margin="209,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Text="0"
+                                TextChanged="TextBoxSignalCoBuyerGreatness_TextChanged"
+                                TextWrapping="Wrap" />
+                        </Grid>
+                        <Grid
+                            Width="243"
+                            Height="28"
+                            Margin="331,13,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                            <Label
+                                x:Name="LabelBasisVolume"
+                                Margin="0,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Content="حجم روز/مبنا &gt;=" />
+                            <TextBox
+                                x:Name="TextBoxSignalBasisVolumeGreatness"
+                                Width="34"
+                                Height="23"
+                                Margin="91,3,0,2"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Text="0"
+                                TextChanged="TextBoxSignalBasisVolumeGreatness_TextChanged"
+                                TextWrapping="Wrap" />
+                            <WrapPanel
+                                Width="70"
+                                Height="26"
+                                Margin="130,1,0,1"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                ToolTipService.ToolTip="فیلتر کردن و نمایش نتایج امروز">
+                                <CheckBox
+                                    x:Name="CheckBoxBasisVolumeSmaller"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Checked="CheckBoxBasisVolumeSmaller_Checked"
+                                    Content=""
+                                    FlowDirection="LeftToRight"
+                                    Unchecked="CheckBoxBasisVolumeSmaller_Unchecked" />
+                                <Label VerticalAlignment="Center" Content="کوچکتر" />
+                            </WrapPanel>
+                        </Grid>
+                        <WrapPanel
+                            Width="167"
+                            Height="26"
+                            Margin="10,142,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            ToolTipService.ToolTip="فیلتر کردن و نمایش نتایج امروز">
+                            <CheckBox
+                                x:Name="CheckBoxCoBuyerGreater"
+                                Margin="0,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Checked="CheckBoxCoBuyerGreater_Checked"
+                                Content=""
+                                FlowDirection="LeftToRight"
+                                Unchecked="CheckBoxCoBuyerGreater_Unchecked" />
+                            <Label VerticalAlignment="Center" Content="خرید حقوقی بیشتر از فروش" />
+                        </WrapPanel>
+                        <Grid
+                            Width="254"
+                            Height="27"
+                            Margin="331,197,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                            <Label
+                                x:Name="LabelPerCapitaBuyValue"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                VerticalContentAlignment="Center"
+                                Content="سرانه خرید (میلیون ریال) &gt;=" />
+                            <TextBox
+                                x:Name="TextBoxPerCapitaBuyValue"
+                                Width="35"
+                                Height="23"
+                                Margin="148,3,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                VerticalContentAlignment="Center"
+                                Text="50"
+                                TextChanged="TextBoxPerCapitaBuyValue_TextChanged"
+                                TextWrapping="Wrap" />
+                            <WrapPanel
+                                Width="66"
+                                Height="26"
+                                Margin="183,0,0,1"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                ToolTipService.ToolTip="فیلتر کردن و نمایش نتایج امروز">
+                                <CheckBox
+                                    x:Name="CheckBoxPerCapitaBuyValue"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Checked="CheckBoxPerCapitaBuyValue_Checked"
+                                    Content=""
+                                    FlowDirection="LeftToRight"
+                                    Unchecked="CheckBoxPerCapitaBuyValue_Unchecked" />
+                                <Label VerticalAlignment="Center" Content="کوچکتر" />
+                            </WrapPanel>
+
+                        </Grid>
+                        <Grid
+                            Width="286"
+                            Height="27"
+                            Margin="10,197,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                            <Label
+                                x:Name="LabelBrifingToBuyerStrength"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                Content="بریفینگ &gt;=" />
+                            <Label
+                                x:Name="LabelBrifingToBuyerStrengthP"
+                                Margin="62,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                Content="قدرت خریدار + %" />
+                            <TextBox
+                                x:Name="TextBoxBrifingToBuyerStrength"
+                                Width="35"
+                                Height="23"
+                                Margin="158,2,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                VerticalContentAlignment="Center"
+                                Text="50"
+                                TextChanged="TextBoxBrifingToBuyerStrength_TextChanged"
+                                TextWrapping="Wrap" />
+                            <WrapPanel
+                                Width="66"
+                                Height="26"
+                                Margin="198,0,0,1"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                ToolTipService.ToolTip="فیلتر کردن و نمایش نتایج امروز">
+                                <CheckBox
+                                    x:Name="CheckBoxBrifingToBuyerStrength"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Checked="CheckBoxBrifingToBuyerStrength_Checked"
+                                    Content=""
+                                    FlowDirection="LeftToRight"
+                                    Unchecked="CheckBoxBrifingToBuyerStrength_Unchecked" />
+                                <Label VerticalAlignment="Center" Content="کوچکتر" />
+                            </WrapPanel>
+
+                        </Grid>
+                        <Grid
+                            Width="286"
+                            Height="27"
+                            Margin="10,168,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                            <Label
+                                x:Name="LabelBrifingToBuyerStrength1"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                Content="دیفرانسیل قدرت خریدار و بریفینگ" />
+                            <TextBox
+                                x:Name="TextBoxBriefingToBuyerStrengthDiff"
+                                Width="35"
+                                Height="23"
+                                Margin="176,0,0,2"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                VerticalContentAlignment="Center"
+                                Text="0"
+                                TextChanged="TextBoxBriefingToBuyerStrengthDiff_TextChanged"
+                                TextWrapping="Wrap" />
+                            <Label
+                                x:Name="LabelBrifingToBuyerStrength1_Copy"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                Content="دیفرانسیل قدرت خریدار و بریفینگ" />
+
+                        </Grid>
+                        <Grid
+                            Width="183"
+                            Height="27"
+                            Margin="331,170,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                            <Label
+                                x:Name="LabelBrifingToBuyerStrength2"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                Content="رشد ارزش بازار کمتر از  %" />
+                            <TextBox
+                                x:Name="TextBoxMarketGrowth"
+                                Width="35"
+                                Height="23"
+                                Margin="135,0,0,2"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                VerticalContentAlignment="Center"
+                                Text="1000"
+                                TextChanged="TextBoxMarketGrowth_TextChanged"
+                                TextWrapping="Wrap" />
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+                <Label
+                    Name="LabelLastUpdate"
+                    Width="139"
+                    Height="26"
+                    Margin="350,226,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    HorizontalContentAlignment="Left"
+                    Content="بروزرسانی" />
+                <WrapPanel
+                    Width="73"
+                    Height="25"
+                    Margin="424,259,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Background="{Binding RateSpectrum[1]}"
+                    Visibility="Visible">
+                    <WrapPanel
+                        Width="80"
+                        Height="26"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top">
+                        <CheckBox
+                            x:Name="checkboxColorDefine"
+                            VerticalAlignment="Center"
+                            Checked="checkboxColorDefine_Checked"
+                            FlowDirection="LeftToRight"
+                            Unchecked="checkboxColorDefine_Unchecked" />
+                        <Label
+                            Width="56"
+                            VerticalAlignment="Center"
+                            Content="اسپکتروم" />
+                    </WrapPanel>
+                    <WrapPanel
+                        Name="WrapPanelSpectrum"
+                        Height="25"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Visibility="Collapsed">
+                        <Label Content="چسبنده" />
+                        <Rectangle
+                            Width="25"
+                            Height="25"
+                            Fill="#064a42" />
+                        <Rectangle
+                            Width="25"
+                            Height="25"
+                            Fill="#138e5b" />
+                        <Rectangle
+                            Width="25"
+                            Height="25"
+                            Fill="#44b9b4" />
+                        <Rectangle
+                            Width="25"
+                            Height="25"
+                            Fill="#86c3b8" />
+                        <Rectangle
+                            Width="25"
+                            Height="25"
+                            Fill="#c6ede6" />
+                        <Label Content="سبک" />
+                    </WrapPanel>
+                </WrapPanel>
+                <WrapPanel
+                    x:Name="wrappanelVolumeControl_Copy"
+                    Width="70"
+                    Height="26"
+                    Margin="9,10,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    ToolTipService.ToolTip="متوسط حجم خریداری شده هر کد خریدار، بیشتر از حجم فروخته شده توسط هرکد فروشنده باشد">
+                    <CheckBox
+                        x:Name="checkboxListPriorityAssets"
+                        VerticalAlignment="Center"
+                        Checked="checkboxListPriorityAssets_Checked"
+                        FlowDirection="LeftToRight"
+                        IsChecked="False"
+                        Unchecked="checkboxListPriorityAssets_Unchecked" />
+                    <Label VerticalAlignment="Center" Content="حق تقدم" />
+                </WrapPanel>
+                <WrapPanel
+                    x:Name="wrappanelCompareLastNClosing_Copy"
+                    Width="136"
+                    Height="26"
+                    Margin="84,10,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    ToolTipService.ToolTip="آخرین قیمت از قیمت پایانی بیشتر باشد">
+                    <CheckBox
+                        x:Name="checkboxListInvestmentFunds"
+                        VerticalAlignment="Center"
+                        Checked="checkboxListInvestmentFunds_Checked"
+                        FlowDirection="LeftToRight"
+                        IsChecked="False"
+                        Unchecked="checkboxListInvestmentFunds_Unchecked" />
+                    <Label VerticalAlignment="Center" Content="صندوق سرمایه گذاری" />
+                </WrapPanel>
+                <WrapPanel
+                    x:Name="wrappanelControlLastPricePercentage_Copy"
+                    Width="133"
+                    Height="26"
+                    Margin="225,10,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    ToolTipService.ToolTip="درصد تغییرات آخرین قیمت بیشتر از صفر باشد">
+                    <CheckBox
+                        x:Name="checkboxListInvestmentCos"
+                        VerticalAlignment="Center"
+                        Checked="checkboxListInvestmentCos_Checked"
+                        FlowDirection="LeftToRight"
+                        IsChecked="false"
+                        Unchecked="checkboxListInvestmentCos_Unchecked" />
+                    <Label VerticalAlignment="Center" Content="شرکت سرمایه گذاری" />
+                </WrapPanel>
+                <WrapPanel
+                    Width="178"
+                    Height="26"
+                    Margin="11,261,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+                    <CheckBox
+                        x:Name="checkboxPtoE"
+                        VerticalAlignment="Center"
+                        Checked="checkboxPtoE_Checked"
+                        FlowDirection="LeftToRight"
+                        IsChecked="True"
+                        Unchecked="checkboxPtoE_Unchecked" />
+                    <Label
+                        Width="107"
+                        VerticalAlignment="Center"
+                        Content="حذف P/E منفی و &gt; " />
+                    <TextBox
+                        x:Name="TextBoxSignalPtoEMax"
+                        Width="35"
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Text="20"
+                        TextChanged="TextBoxSignalPtoEMax_TextChanged"
+                        TextWrapping="Wrap"
+                        ToolTip="حداکثر P/E نمایش داده شده در لیست" />
+                </WrapPanel>
+                <WrapPanel
+                    Width="556"
+                    Height="30"
+                    Margin="0,68,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top">
+                    <Label
+                        Width="106"
+                        Height="26"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Content="مقایسه با دوره های" />
+                    <TextBox
+                        x:Name="TextBoxCompareHistoryDays"
+                        Width="43"
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Text="30"
+                        TextWrapping="Wrap" />
+                    <Button
+                        x:Name="ButtonAddHistoryPeriod"
+                        Width="24"
+                        Height="24"
+                        Margin="3"
+                        VerticalAlignment="Center"
+                        Click="ButtonAddHistoryPeriod_Click"
+                        Content="+" />
+                    <Label
+                        Name="LabelCompareHistoryDays"
+                        Width="315"
+                        Content="" />
+                    <Label Content="روزه" />
+                    <Button
+                        Name="ButtonClearHistoryPeriods"
+                        Width="24"
+                        Height="24"
+                        Margin="3"
+                        VerticalAlignment="Center"
+                        Click="ButtonClearHistoryPeriods_Click"
+                        Content="-" />
+                </WrapPanel>
+                <DockPanel
+                    Grid.Row="1"
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="2">
+
+
+                    <StatusBar
+                        Height="50"
+                        Margin="0"
+                        VerticalAlignment="Bottom"
+                        Background="LightGray"
+                        DockPanel.Dock="Bottom"
+                        FlowDirection="RightToLeft">
+                        <StatusBar.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="700" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="50" />
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
+                            </ItemsPanelTemplate>
+                        </StatusBar.ItemsPanel>
+                        <StatusBarItem Grid.Column="0">
+                            <WrapPanel>
+                                <Label
+                                    x:Name="LabelLoadedCompanies"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Content="نمادها:"
+                                    FlowDirection="RightToLeft"
+                                    ToolTip="تعدادها نمادهای بارگذاری شده (فعال) روز" />
+                                <Label
+                                    x:Name="LabelListedCompanies"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Content="لیست:"
+                                    FlowDirection="RightToLeft"
+                                    ToolTip="تعدادهای منطبق برای تنظیمات کاربر از میان نمادهای بارگذاری شده (فعال) روز" />
+                                <Label
+                                    x:Name="LabelMarketPtoE"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Content="P/E بازار:"
+                                    FlowDirection="RightToLeft"
+                                    ToolTip="" />
+                                <Label
+                                    x:Name="LabelSelectedRows"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Content="انتخاب:"
+                                    FlowDirection="RightToLeft"
+                                    ToolTip="" />
+                                <Label Width="100" />
+                                <Label
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Content="عبارت حقیقی در عنوان ستون ها حذف شده است"
+                                    ToolTip="عبارت حقیقی برای ستونهای مرتبط با حقیقی که می توانند موضوع عملکرد حقیقی/حقوقی باشند، حذف و فقط در توضیحات نمایش داده شده است." />
+                            </WrapPanel>
+                        </StatusBarItem>
+                        <StatusBarItem Grid.Column="1" />
+                        <StatusBarItem Grid.Column="2" />
+                        <StatusBarItem Grid.Column="3">
+                            <Button
+                                Name="buttonToken"
+                                Width="50"
+                                Height="50"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                HorizontalContentAlignment="Left"
+                                Click="buttonToken_Click">
+                                <Image
+                                    Width="45"
+                                    Height="45"
+                                    Source="/MFIWPF;component/Images/TokenTiny.png" />
+                            </Button>
+                        </StatusBarItem>
+                    </StatusBar>
+                </DockPanel>
+            </Grid>
+        </ContentControl>
+    </Grid>
+</Window>

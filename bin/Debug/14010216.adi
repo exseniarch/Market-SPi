@@ -1,0 +1,6 @@
+
+{"Error":"request timeout or empty response","Code":0}  Uncaught Error: Call to undefined method MongoDB\Client::close() in /var/www/sourcearena/html/api/api.php:1749
+Stack trace:
+#0 /var/www/sourcearena/html/api/api.php(182): validate_token()
+#1 {main}
+  thrown in <b>/var/www/sourcearena/html/api/api.php</b> on line <b>1749</b><br />

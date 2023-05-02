@@ -1,0 +1,114 @@
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\bin\Debug\MFIWPF.exe.config
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\bin\Debug\MFIWPF.exe
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\bin\Debug\MFIWPF.pdb
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\bin\Debug\Newtonsoft.Json.dll
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\bin\Debug\RestSharp.dll
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\bin\Debug\Newtonsoft.Json.xml
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\bin\Debug\RestSharp.xml
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\obj\Debug\Spi.csprojAssemblyReference.cache
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\obj\Debug\MainWindow.g.cs
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\obj\Debug\WindowLogIn.g.cs
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\obj\Debug\App.g.cs
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF_MarkupCompile.cache
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF_MarkupCompile.lref
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\obj\Debug\MainWindow.baml
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\obj\Debug\WindowLogIn.baml
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF.g.resources
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF.Properties.Resources.resources
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\obj\Debug\Spi.csproj.GenerateResource.cache
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\obj\Debug\Spi.csproj.CoreCompileInputs.cache
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\obj\Debug\Spi.csproj.CopyComplete
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF.exe
+D:\Multimedia\Documents\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF.pdb
+D:\Stock\Codes\SPi\Spi\bin\Debug\MFIWPF.exe.config
+D:\Stock\Codes\SPi\Spi\bin\Debug\MFIWPF.exe
+D:\Stock\Codes\SPi\Spi\bin\Debug\MFIWPF.pdb
+D:\Stock\Codes\SPi\Spi\bin\Debug\Newtonsoft.Json.dll
+D:\Stock\Codes\SPi\Spi\bin\Debug\RestSharp.dll
+D:\Stock\Codes\SPi\Spi\bin\Debug\Newtonsoft.Json.xml
+D:\Stock\Codes\SPi\Spi\bin\Debug\RestSharp.xml
+D:\Stock\Codes\SPi\Spi\obj\Debug\Spi.csprojAssemblyReference.cache
+D:\Stock\Codes\SPi\Spi\obj\Debug\MainWindow.g.cs
+D:\Stock\Codes\SPi\Spi\obj\Debug\WindowLogIn.g.cs
+D:\Stock\Codes\SPi\Spi\obj\Debug\App.g.cs
+D:\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF_MarkupCompile.cache
+D:\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF_MarkupCompile.lref
+D:\Stock\Codes\SPi\Spi\obj\Debug\MainWindow.baml
+D:\Stock\Codes\SPi\Spi\obj\Debug\WindowLogIn.baml
+D:\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF.g.resources
+D:\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF.Properties.Resources.resources
+D:\Stock\Codes\SPi\Spi\obj\Debug\Spi.csproj.GenerateResource.cache
+D:\Stock\Codes\SPi\Spi\obj\Debug\Spi.csproj.CoreCompileInputs.cache
+D:\Stock\Codes\SPi\Spi\obj\Debug\Spi.csproj.CopyComplete
+D:\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF.exe
+D:\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF.pdb
+D:\Business\Stock\Codes\SPi\Spi\bin\Debug\MFIWPF.exe.config
+D:\Business\Stock\Codes\SPi\Spi\bin\Debug\MFIWPF.exe
+D:\Business\Stock\Codes\SPi\Spi\bin\Debug\MFIWPF.pdb
+D:\Business\Stock\Codes\SPi\Spi\bin\Debug\Newtonsoft.Json.dll
+D:\Business\Stock\Codes\SPi\Spi\bin\Debug\RestSharp.dll
+D:\Business\Stock\Codes\SPi\Spi\bin\Debug\Newtonsoft.Json.xml
+D:\Business\Stock\Codes\SPi\Spi\bin\Debug\RestSharp.xml
+D:\Business\Stock\Codes\SPi\Spi\obj\Debug\MainWindow.g.cs
+D:\Business\Stock\Codes\SPi\Spi\obj\Debug\WindowLogIn.g.cs
+D:\Business\Stock\Codes\SPi\Spi\obj\Debug\App.g.cs
+D:\Business\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF_MarkupCompile.cache
+D:\Business\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF_MarkupCompile.lref
+D:\Business\Stock\Codes\SPi\Spi\obj\Debug\MainWindow.baml
+D:\Business\Stock\Codes\SPi\Spi\obj\Debug\WindowLogIn.baml
+D:\Business\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF.g.resources
+D:\Business\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF.Properties.Resources.resources
+D:\Business\Stock\Codes\SPi\Spi\obj\Debug\Spi.csproj.GenerateResource.cache
+D:\Business\Stock\Codes\SPi\Spi\obj\Debug\Spi.csproj.CoreCompileInputs.cache
+D:\Business\Stock\Codes\SPi\Spi\obj\Debug\Spi.csproj.CopyComplete
+D:\Business\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF.exe
+D:\Business\Stock\Codes\SPi\Spi\obj\Debug\MFIWPF.pdb
+D:\Business\Stock\Codes\SPi\Spi\obj\Debug\Spi.csproj.AssemblyReference.cache
+D:\Business\Stock Market\Codes\SPi\Spi\bin\Debug\MFIWPF.exe.config
+D:\Business\Stock Market\Codes\SPi\Spi\bin\Debug\MFIWPF.exe
+D:\Business\Stock Market\Codes\SPi\Spi\bin\Debug\MFIWPF.pdb
+D:\Business\Stock Market\Codes\SPi\Spi\bin\Debug\Newtonsoft.Json.dll
+D:\Business\Stock Market\Codes\SPi\Spi\bin\Debug\RestSharp.dll
+D:\Business\Stock Market\Codes\SPi\Spi\bin\Debug\Newtonsoft.Json.xml
+D:\Business\Stock Market\Codes\SPi\Spi\bin\Debug\RestSharp.xml
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\Spi.csproj.AssemblyReference.cache
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\Spi.csproj.SuggestedBindingRedirects.cache
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\MainWindow.g.cs
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\WindowLogIn.g.cs
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\App.g.cs
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\MFIWPF_MarkupCompile.cache
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\MFIWPF_MarkupCompile.lref
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\MainWindow.baml
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\WindowLogIn.baml
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\MFIWPF.g.resources
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\MFIWPF.Properties.Resources.resources
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\Spi.csproj.GenerateResource.cache
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\Spi.csproj.CoreCompileInputs.cache
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\Spi.csproj.CopyComplete
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\MFIWPF.exe
+D:\Business\Stock Market\Codes\SPi\Spi\obj\Debug\MFIWPF.pdb
+D:\Guardian\Stock Market\Codes\SPi\Spi\bin\Debug\MFIWPF.exe.config
+D:\Guardian\Stock Market\Codes\SPi\Spi\bin\Debug\MFIWPF.exe
+D:\Guardian\Stock Market\Codes\SPi\Spi\bin\Debug\MFIWPF.pdb
+D:\Guardian\Stock Market\Codes\SPi\Spi\bin\Debug\Newtonsoft.Json.dll
+D:\Guardian\Stock Market\Codes\SPi\Spi\bin\Debug\RestSharp.dll
+D:\Guardian\Stock Market\Codes\SPi\Spi\bin\Debug\Newtonsoft.Json.xml
+D:\Guardian\Stock Market\Codes\SPi\Spi\bin\Debug\RestSharp.xml
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\Spi.csproj.AssemblyReference.cache
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\Spi.csproj.SuggestedBindingRedirects.cache
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\MainWindow.g.cs
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\WindowLogIn.g.cs
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\App.g.cs
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\MFIWPF_MarkupCompile.cache
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\MFIWPF_MarkupCompile.lref
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\MainWindow.baml
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\WindowLogIn.baml
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\MFIWPF.g.resources
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\MFIWPF.Properties.Resources.resources
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\Spi.csproj.GenerateResource.cache
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\Spi.csproj.CoreCompileInputs.cache
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\Spi.csproj.CopyComplete
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\MFIWPF.exe
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\MFIWPF.pdb
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\WindowToken.g.cs
+D:\Guardian\Stock Market\Codes\SPi\Spi\obj\Debug\WindowToken.baml
